@@ -1,4 +1,3 @@
-// 1. Raw Materials & Malting
 elements.barley = {
     color: "#e2c287",
     behavior: behaviors.POWDER,
@@ -18,7 +17,7 @@ elements.wet_barley = {
     density: 800,
     tempHigh: 50,          
     stateHigh: "malted_barley",
-    hidden: true
+    hidden: true,
 };
 
 elements.malted_barley = {
@@ -31,10 +30,9 @@ elements.malted_barley = {
     reactions: {
         "peat_smoke": { elem1: "peated_malted_barley", elem2: null }
     },
-    hidden: true
+    hidden: true,
 };
 
-// 2. Peat & Smoke Mechanics
 elements.peat = {
     color: "#4a3525",
     behavior: behaviors.POWDER,
@@ -54,16 +52,26 @@ elements.peat_smoke = {
     state: "gas",
     density: 0.5,
     temp: 30,
-    hidden: true
+    hidden: true,
 };
 
-// 3. Unpeated Production Line
 elements.grist = {
     color: "#9c814d",
     behavior: behaviors.POWDER,
     category: "powders",
     state: "solid",
     density: 500,
+    reactions: {
+        "water": { elem1: "wort", elem2: null }
+    },
+    hidden: true,
+};
+
+elements.wort = {
+    color: "#CB6F26",
+    behavior: behaviors.LIQUID,
+    category: "liquids",
+    state: "liquid",
     reactions: {
         "yeast": { elem1: "wash", elem2: null }
     },
@@ -76,23 +84,23 @@ elements.wash = {
     category: "liquids",
     state: "liquid",
     density: 1010,
-    tempHigh: 50,         
-    stateHigh: "hearts",
-    hidden: true
+    tempHigh: 78,         
+    stateHigh: "heart",
+    hidden: true,
 };
 
-elements.hearts = {
-    color: "#f3e1b3",
+elements.heart = {
+    color: "#E5DCC6",
     behavior: behaviors.LIQUID,
     category: "liquids",
     state: "liquid",
     viscosity: 1.2,
-    burn: 50,
-    burnTime: 250,
+    burn: 25,
+    burnTime: 300,
     reactions: {
         "wood": { elem1: "scotch_whisky", elem2: "wood" }
     },
-    hidden: true
+    hidden: true,
 };
 
 elements.scotch_whisky = {
@@ -103,10 +111,9 @@ elements.scotch_whisky = {
     viscosity: 1.5,
     burn: 40,
     burnTime: 300,
-    hidden: true
+    hidden: true,
 };
 
-// 4. Peated Production Line
 elements.peated_malted_barley = {
     color: "#96784b",
     behavior: behaviors.POWDER,
@@ -114,7 +121,7 @@ elements.peated_malted_barley = {
     state: "solid",
     density: 550,
     breakInto: "peated_grist",
-    hidden: true
+    hidden: true,
 };
 
 elements.peated_grist = {
@@ -123,6 +130,17 @@ elements.peated_grist = {
     category: "powders",
     state: "solid",
     density: 500,
+    reactions: {
+        "water": { elem1: "peated_wort", elem2: null }
+    },
+    hidden: true,
+};
+
+elements.peated_wort = {
+    color: "#602803",
+    behavior: behaviors.LIQUID,
+    category: "liquids",
+    state: "liquid",
     reactions: {
         "yeast": { elem1: "peated_wash", elem2: null }
     },
@@ -135,12 +153,13 @@ elements.peated_wash = {
     category: "liquids",
     state: "liquid",
     density: 1010,
-    tempHigh: 50,         
-    stateHigh: "peated_hearts",
-    hidden: true
+    tempHigh: 78,         
+    stateHigh: "peated_heart",
+    hidden: true,
 };
 
-elements.peated_hearts = {
+
+elements.peated_heart = {
     color: "#e6c88e",
     behavior: behaviors.LIQUID,
     category: "liquids",
@@ -149,12 +168,12 @@ elements.peated_hearts = {
     burn: 50,
     burnTime: 250,
     reactions: {
-        "wood": { elem1: "peated_scotch_whisky", elem2: "wood" }
+        "wood": { elem1: "peaty_scotch_whisky", elem2: "wood" }
     },
-    hidden: true
+    hidden: true,
 };
 
-elements.peated_scotch_whisky = {
+elements.peaty_scotch_whisky = {
     color: "#8c4a18", 
     behavior: behaviors.LIQUID,
     category: "liquids",
@@ -162,8 +181,5 @@ elements.peated_scotch_whisky = {
     viscosity: 1.6,
     burn: 45,
     burnTime: 320,
-    hidden: true
+    hidden: true,
 };
-
-// Force UI button buffer update
-updateUi();
