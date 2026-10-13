@@ -1,3 +1,31 @@
+elements.oak = {
+    color: "#8b5a2b",
+    behavior: behaviors.WALL,
+    category: "solids",
+    state: "solid",
+    density: 700,
+    burn: 20,
+    burnTime: 400,
+    burnInto: "charcoal",
+    fireColor: "#b87333",
+    reactions: {
+        "juice": { elem1: "sherry_stained_oak", elem2: "juice" },
+    },
+};
+
+elements.sherry_stained_oak = {
+    color: "#923e49",
+    behavior: behaviors.WALL,
+    category: "solids",
+    state: "solid",
+    density: 700,
+    burn: 20,
+    burnTime: 400,
+    burnInto: "charcoal",
+    fireColor: "#b87333",
+    hidden: true,
+};
+
 elements.barley = {
     color: "#e2c287",
     behavior: behaviors.POWDER,
@@ -28,7 +56,7 @@ elements.malted_barley = {
     density: 550,
     breakInto: "grist",
     reactions: {
-        "peat_smoke": { elem1: "peated_malted_barley", elem2: null }
+        "peat_smoke": { elem1: "peaty_malted_barley", elem2: null }
     },
     hidden: true,
 };
@@ -87,16 +115,43 @@ elements.wash = {
     category: "liquids",
     state: "liquid",
     density: 1010,
-    tempHigh: 78,         
-    stateHigh: "heart",
     temp: 20,
     tempLow: -4,
     stateLow: "wash_ice",
     hidden: true,
+    tick: function(pixel) {
+        if (pixel.temp >= 78) {
+            let rand = Math.random();
+            if (rand < 0.80) {
+                // 80% chance to turn into Heart
+                changePixel(pixel, "heart");
+            } else if (rand < 0.90) {
+                // 10% chance to turn into Heads (0.80 to 0.90)
+                changePixel(pixel, "heads");
+            } else {
+                // 10% chance to turn into Feints (0.90 to 1.0)
+                changePixel(pixel, "feints");
+            }
+        }
+    }
 };
 
+elements.heads = {
+    color: "#9f8f80",
+    behavior: behaviors.LIQUID,
+    category: "liquids",
+    state: "liquid",
+    density: 1010,
+    temp: 20,
+    tempLow: -4,
+    burn: 10,
+    burnTime: 200,
+    stateLow: "heads_ice",
+    hidden: true,
+}
+
 elements.heart = {
-    color: "#E5DCC6",
+    color: "#9f6e40",
     behavior: behaviors.LIQUID,
     category: "liquids",
     state: "liquid",
@@ -104,7 +159,8 @@ elements.heart = {
     burn: 25,
     burnTime: 300,
     reactions: {
-        "wood": { elem1: "scotch_whisky", elem2: "wood" }
+        "oak": { elem1: "scotch_whisky", elem2: "oak" },
+        "sherry_stained_oak": { elem1: "sherry_scotch_whisky", elem2: "sherry_stained_oak" },
     },
     temp: 20,
     tempLow: -24,
@@ -112,8 +168,56 @@ elements.heart = {
     hidden: true,
 };
 
+elements.feints = {
+    color: "#6c5540",
+    behavior: behaviors.LIQUID,
+    category: "liquids",
+    state: "liquid",
+    density: 1010,
+    temp: 20,
+    tempLow: -4,
+    burn: 25,
+    burnTime: 400,
+    stateLow: "feints_ice",
+    reactions: {
+        "heads": { elem1: "wash", elem2: null }
+    },
+    hidden: true,
+};
+
 elements.scotch_whisky = {
     color: "#b46d29", 
+    behavior: behaviors.LIQUID,
+    category: "liquids",
+    state: "liquid",
+    viscosity: 1.5,
+    burn: 40,
+    burnTime: 300,
+    temp: 10,
+    tempLow: -29,
+    stateLow: "scotch_whisky_ice",
+    reactions: {
+        "sugar": { elem1: "sweetened_scotch_whisky", elem2: null },
+    },
+    hidden: true,
+};
+
+elements.sherry_scotch_whisky = {
+    color: "#8c4a18",
+    behavior: behaviors.LIQUID,
+    category: "liquids",
+    state: "liquid",
+    viscosity: 1.6,
+    burn: 45,
+    burnTime: 320,
+    temp: 10,
+    tempLow: -29,
+    stateLow: "sherry_scotch_whisky_ice",
+    hidden: true,
+}; 
+
+elements.sweetened_scotch_whisky = {
+    color: "#b46d29",
     behavior: behaviors.LIQUID,
     category: "liquids",
     state: "liquid",
@@ -143,7 +247,7 @@ elements.peaty_grist = {
     state: "solid",
     density: 500,
     reactions: {
-        "water": { elem1: "peaty_wort", elem2: null }
+        "water": { elem1: "peaty_wort", elem2: null },
     },
     hidden: true,
 };
@@ -154,7 +258,8 @@ elements.peaty_wort = {
     category: "liquids",
     state: "liquid",
     reactions: {
-        "yeast": { elem1: "peaty_wash", elem2: null }
+        "yeast": { elem1: "peaty_wash", elem2: null },
+        "sugar_water": { elem1: "wort", elem2: null }
     },
     temp: 20,
     tempLow: -1,
@@ -168,17 +273,49 @@ elements.peaty_wash = {
     category: "liquids",
     state: "liquid",
     density: 1010,
-    tempHigh: 78,         
-    stateHigh: "peaty_heart",
     temp: 20,
     tempLow: -4,
     stateLow: "peaty_wash_ice",
+    reactions: {
+        "sugar_water": { elem1: "wash", elem2: null }
+    },
+    hidden: true,
+    tick: function(pixel) {
+        if (pixel.temp >= 78) {
+            let rand = Math.random();
+            if (rand < 0.80) {
+                // 80% chance to turn into Peaty Heart
+                changePixel(pixel, "peaty_heart");
+            } else if (rand < 0.90) {
+                // 10% chance to turn into Peaty Heads
+                changePixel(pixel, "peaty_heads");
+            } else {
+                // 10% chance to turn into Peaty Feints
+                changePixel(pixel, "peaty_feints");
+            }
+        }
+    }
+};
+
+elements.peaty_heads = {
+    color: "#B39A83",
+    behavior: behaviors.LIQUID,
+    category: "liquids",
+    state: "liquid",
+    density: 1010,
+    temp: 20,
+    tempLow: -4,
+    burn: 10,
+    burnTime: 200,
+    stateLow: "peaty_heads_ice",
+    reactions: {
+        "sugar_water": { elem1: "heads", elem2: null }
+    },
     hidden: true,
 };
 
-
 elements.peaty_heart = {
-    color: "#e6c88e",
+    color: "#92765F",
     behavior: behaviors.LIQUID,
     category: "liquids",
     state: "liquid",
@@ -189,7 +326,27 @@ elements.peaty_heart = {
     tempLow: -24,
     stateLow: "peaty_heart_ice",
     reactions: {
-        "wood": { elem1: "peaty_scotch_whisky", elem2: "wood" }
+        "oak": { elem1: "peaty_scotch_whisky", elem2: "oak" },
+        "sugar_water": { elem1: "heart", elem2: null },
+        "sherry_stained_oak": { elem1: "peaty_sherry_scotch_whisky", elem2: "sherry_stained_oak" },
+    },
+    hidden: true,
+};
+
+elements.peaty_feints = {
+    color: "#655449",
+    behavior: behaviors.LIQUID,
+    category: "liquids",
+    state: "liquid",
+    density: 1010,
+    temp: 20,
+    tempLow: -4,
+    burn: 25,
+    burnTime: 400,
+    stateLow: "peaty_feints_ice",
+    reactions: {
+        "sugar_water": { elem1: "feints", elem2: null },
+        "peaty_heads": { elem1: "peaty_wash", elem2: null }
     },
     hidden: true,
 };
@@ -205,6 +362,26 @@ elements.peaty_scotch_whisky = {
     temp: 10,
     tempLow: -29,
     stateLow: "peaty_scotch_whisky_ice",
+    reactions: {
+        "sugar_water": { elem1: "scotch_whisky", elem2: null }
+    },
+    hidden: true,
+};
+
+elements.peaty_sherry_scotch_whisky = {
+    color: "#7a3b0f",
+    behavior: behaviors.LIQUID,
+    category: "liquids",
+    state: "liquid",
+    viscosity: 1.7,
+    burn: 50,
+    burnTime: 250,
+    temp: 10,
+    tempLow: -29,
+    stateLow: "peaty_sherry_scotch_whisky_ice",
+    reactions: {
+        "sugar_water": { elem1: "sherry_scotch_whisky", elem2: null }
+    },
     hidden: true,
 };
 
@@ -256,6 +433,30 @@ elements.peaty_wash_ice = {
     hidden: true,
 };
 
+elements.heads_ice = {
+    color: "#f2e6d9",
+    behavior: behaviors.WALL,
+    category: "states",
+    state: "solid",
+    density: 930,
+    temp: -20,
+    tempHigh: -10,
+    stateHigh: "heads",
+    hidden: true,
+};
+
+elements.peaty_heads_ice = {
+    color: "#e6d9c6",
+    behavior: behaviors.WALL,
+    category: "states",
+    state: "solid",
+    density: 930,
+    temp: -20,
+    tempHigh: -10,
+    stateHigh: "peaty_heads",
+    hidden: true,
+};
+
 elements.heart_ice = {
     color: "#f2ede2",
     behavior: behaviors.WALL,
@@ -280,6 +481,30 @@ elements.peaty_heart_ice = {
     hidden: true,
 };
 
+elements.feints_ice = {
+    color: "#e6d9c6",
+    behavior: behaviors.WALL,
+    category: "states",
+    state: "solid",
+    density: 940,
+    temp: -20,
+    tempHigh: -10,
+    stateHigh: "feints",
+    hidden: true,
+};
+
+elements.peaty_feints_ice = {
+    color: "#d9cbb8",
+    behavior: behaviors.WALL,
+    category: "states",
+    state: "solid",
+    density: 940,
+    temp: -20,
+    tempHigh: -10,
+    stateHigh: "peaty_feints",
+    hidden: true,
+};
+
 elements.scotch_whisky_ice = {
     color: "#cf9153",
     behavior: behaviors.WALL,
@@ -301,5 +526,29 @@ elements.peaty_scotch_whisky_ice = {
     temp: -40,
     tempHigh: -30,
     stateHigh: "peaty_scotch_whisky",
+    hidden: true,
+};
+
+elements.sherry_scotch_whisky_ice = {
+    color: "#a05c2e",
+    behavior: behaviors.WALL,
+    category: "states",
+    state: "solid",
+    density: 860,
+    temp: -40,
+    tempHigh: -30,
+    stateHigh: "sherry_scotch_whisky",
+    hidden: true,
+};
+
+elements.peaty_sherry_scotch_whisky_ice = {
+    color: "#8c4a18",
+    behavior: behaviors.WALL,
+    category: "states",
+    state: "solid",
+    density: 860,
+    temp: -40,
+    tempHigh: -30,
+    stateHigh: "peaty_sherry_scotch_whisky",
     hidden: true,
 };
