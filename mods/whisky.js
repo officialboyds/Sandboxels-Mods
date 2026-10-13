@@ -50,6 +50,18 @@ elements.pumpkin_purée = {
     hidden: true,
 };
 
+elements.grape_purée = {
+    color: "#8050A0",
+    behavior: behaviors.LIQUID,
+    category: "liquids",
+    state: "liquid",
+    density: 600,
+    temp: 20,
+    tempLow: -1,
+    stateLow: "grape_purée_ice",
+    hidden: true,
+};
+
 elements.corn_mash = {
     color: "#ddbb72",
     behavior: behaviors.LIQUID,
@@ -229,21 +241,178 @@ elements.malted_barley = {
     density: 550,
     breakInto: "grist",
     reactions: {
-        "peat_smoke": { elem1: "peaty_malted_barley", elem2: null }
+        "peat_smoke": { elem1: "peaty_malted_barley", elem2: null },
+        "barley": { elem1: "malt_mix", elem2: null }
     },
     hidden: true,
 };
 
-elements.peat = {
-    color: "#4a3525",
+elements.malt_mix = {
+    color: "#D8C18A",
     behavior: behaviors.POWDER,
     category: "powders",
     state: "solid",
-    density: 700,
-    burn: 20,
+    density: 550,
+    reactions: {
+        "corn": { elem1: "grain_mix", elem2: null },
+    },
+    hidden: true,
+};
+
+elements.grain_mix = {
+    color: "#C6A96B",
+    behavior: behaviors.POWDER,
+    category: "powders",
+    state: "solid",
+    density: 550,
+    reactions: {
+        "flour": { elem1: "meal", elem2: null },
+    },
+    hidden: true,
+};
+
+elements.meal = {
+    color: "#d6c5a0",
+    behavior: behaviors.POWDER,
+    category: "powders",
+    state: "solid",
+    density: 550,
+    reactions: {
+        "water": { elem1: "grain_wort", elem2: null },
+    },
+    hidden: true,
+};
+
+elements.grain_wort = {
+    color: "#e3c56b",
+    behavior: behaviors.LIQUID,
+    category: "liquids",
+    state: "liquid",
+    reactions: {
+        "yeast": { elem1: "grain_wash", elem2: null }
+    },
+    temp: 20,
+    tempLow: -1,
+    stateLow: "grain_wort_ice",
+    hidden: true
+};
+
+elements.grain_wash = {
+    color: "#b98b48",
+    behavior: behaviors.LIQUID,
+    category: "liquids",
+    state: "liquid",
+    density: 1010,
+    temp: 20,
+    tempLow: -4,
+    stateLow: "grain_wash_ice",
+    hidden: true,
+    tick: function(pixel) {
+        if (pixel.temp >= 78) {
+            let rand = Math.random();
+            if (rand < 0.80) {
+                changePixel(pixel, "grain_heart");
+            } else if (rand < 0.90) {
+                changePixel(pixel, "grain_foreshots");
+            } else {
+                changePixel(pixel, "grain_feints");
+            }
+        }
+    }
+};
+
+elements.grain_foreshots = {
+    color: "#E4D0AA",
+    behavior: behaviors.LIQUID,
+    category: "liquids",
+    state: "liquid",
+    density: 1010,
+    temp: 20,
+    tempLow: -9,
+    burn: 10,
+    burnTime: 200,
+    stateLow: "grain_foreshots_ice",
+    hidden: true,
+};
+
+elements.grain_heart = {
+    color: "#9f6e40",
+    behavior: behaviors.LIQUID,
+    category: "liquids",
+    state: "liquid",
+    viscosity: 1.2,
+    burn: 25,
+    burnTime: 300,
+    reactions: {
+        "oak": { elem1: "irish_grain_whiskey", elem2: "oak" },
+        "grape_purée": { elem1: "fruity_grain_heart", elem2: null },
+    },
+    temp: 20,
+    tempLow: -24,
+    stateLow: "grain_heart_ice",
+    hidden: true,
+};
+
+elements.grain_feints = {
+    color: "#70503a",
+    behavior: behaviors.LIQUID,
+    category: "liquids",
+    state: "liquid",
+    density: 1010,
+    temp: 20,
+    tempLow: -24,
+    burn: 25,
     burnTime: 400,
-    burnInto: "peat_smoke",
-    fireColor: "#b87333"
+    stateLow: "grain_feints_ice",
+    reactions: {
+        "grain_foreshots": { elem1: "grain_wash", elem2: null }
+    },
+    hidden: true,
+};
+
+elements.irish_grain_whiskey = {
+    color: "#A66A2C", 
+    behavior: behaviors.LIQUID,
+    category: "liquids",
+    state: "liquid",
+    viscosity: 1.5,
+    burn: 40,
+    burnTime: 300,
+    temp: 10,
+    tempLow: -29,
+    stateLow: "irish_grain_whiskey_ice",
+    hidden: true,
+};
+
+elements.fruity_grain_heart = {
+    color: "#a66b72", 
+    behavior: behaviors.LIQUID,
+    category: "liquids",
+    state: "liquid",
+    density: 1010,
+    temp: 20,
+    tempLow: -24,
+    burn: 25,
+    burnTime: 400,
+    stateLow: "grain_feints_ice",
+    reactions: {
+        "oak": { elem1: "irish_fruit_whiskey", elem2: "oak" }
+    },
+    hidden: true,
+};
+
+elements.irish_fruit_whiskey = {
+    color: "#A66A2C",
+    behavior: behaviors.LIQUID,
+    category: "liquids",
+    state: "liquid",
+    viscosity: 1.5,
+    burn: 40,
+    burnTime: 300,
+    temp: 10,
+    tempLow: -29,
+    stateLow: "irish_fruit_whiskey_ice",
+    hidden: true,
 };
 
 elements.peat_smoke = {
@@ -337,7 +506,7 @@ elements.heart = {
     },
     temp: 20,
     tempLow: -24,
-    stateLow: "heartice",
+    stateLow: "heart_ice",
     hidden: true,
 };
 
@@ -544,6 +713,8 @@ elements.peaty_sherry_scotch_whisky = {
 if (!elements.water.reactions) elements.water.reactions = {};
 elements.water.reactions["corn"] = { elem1:"corn_mash", elem2:null };
 elements.water.reactions["pumpkin"] = { elem1:"pumpkin_purée", elem2:null };
+if (!elements.grape.reactions) elements.grape.reactions = {};
+elements.grape.reactions["jelly"] = { elem1:"grape_purée", elem2:null };
 
 elements.pumpkin_purée_ice = {
     color: "#fca311",
@@ -557,6 +728,17 @@ elements.pumpkin_purée_ice = {
     hidden: true
 }
 
+elements.grape_purée_ice = {
+    color: "#8050A0",
+    behavior: behaviors.WALL,
+    category: "states",
+    state: "solid",
+    density: 917,
+    temp: -5,
+    tempHigh: 0,
+    stateHigh: "grape_purée",
+    hidden: true
+}
 
 elements.corn_mash_ice = {
     color: "#DDBB72",
@@ -831,5 +1013,101 @@ elements.peaty_sherry_scotch_whisky_ice = {
     temp: -40,
     tempHigh: -30,
     stateHigh: "peaty_sherry_scotch_whisky",
+    hidden: true,
+};
+
+elements.grain_wort_ice = {
+    color: "#e3c56b",
+    behavior: behaviors.WALL,
+    category: "states",
+    state: "solid",
+    density: 917,
+    temp: -5,
+    tempHigh: 0,
+    stateHigh: "grain_wort",
+    hidden: true,
+};
+
+elements.grain_wash_ice = {
+    color: "#b98b48",
+    behavior: behaviors.WALL,
+    category: "states",
+    state: "solid",
+    density: 920,
+    temp: -10,
+    tempHigh: -5,
+    stateHigh: "grain_wash",
+    hidden: true,
+};
+
+elements.grain_foreshots_ice = {
+    color: "#e4d0aa",
+    behavior: behaviors.WALL,
+    category: "states",
+    state: "solid",
+    density: 930,
+    temp: -20,
+    tempHigh: -10,
+    stateHigh: "grain_foreshots",
+    hidden: true,
+};
+
+elements.grain_heart_ice = {
+    color: "#9f6e40",
+    behavior: behaviors.WALL,
+    category: "states",
+    state: "solid",
+    density: 850,
+    temp: -40,
+    tempHigh: -24,
+    stateHigh: "grain_heart",
+    hidden: true,
+};
+
+elements.grain_feints_ice = {
+    color: "#70503a",
+    behavior: behaviors.WALL,
+    category: "states",
+    state: "solid",
+    density: 940,
+    temp: -20,
+    tempHigh: -10,
+    stateHigh: "grain_feints",
+    hidden: true,
+};
+
+elements.irish_grain_whiskey_ice = {
+    color: "#a66b2c",
+    behavior: behaviors.WALL,
+    category: "states",
+    state: "solid",
+    density: 860,
+    temp: -40,
+    tempHigh: -30,
+    stateHigh: "irish_grain_whiskey",
+    hidden: true,
+};
+
+elements.fruity_grain_heart_ice = {
+    color: "#a66b72",
+    behavior: behaviors.WALL,
+    category: "states",
+    state: "solid",
+    density: 850,
+    temp: -40,
+    tempHigh: -24,
+    stateHigh: "fruity_grain_heart",
+    hidden: true,
+};
+
+elements.irish_fruit_whiskey_ice = {
+    color: "#a66b2c",
+    behavior: behaviors.WALL,
+    category: "states",
+    state: "solid",
+    density: 860,
+    temp: -40,
+    tempHigh: -30,
+    stateHigh: "irish_fruit_whiskey",
     hidden: true,
 };
