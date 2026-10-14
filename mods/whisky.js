@@ -418,7 +418,7 @@ elements.irish_fruit_whiskey = {
 elements.peat = {
     color: "#7d756d",
     behavior: behaviors.POWDER,
-    categore: "finlays_extras",
+    category: "finlays_extras",
     state: "solid",
     density: 550,
     burn: 10,
