@@ -1,7 +1,7 @@
 elements.oak = {
     color: "#8b5a2b",
     behavior: behaviors.WALL,
-    category: "solids",
+    category: "finlays_extras",
     state: "solid",
     density: 700,
     burn: 20,
@@ -16,7 +16,7 @@ elements.oak = {
 elements.charred_oak = {
     color: "#382820",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_extras",
     state: "solid",
     density: 700,
     burn: 20,
@@ -28,7 +28,7 @@ elements.charred_oak = {
 elements.sherry_stained_oak = {
     color: "#923e49",
     behavior: behaviors.WALL,
-    category: "solids",
+    category: "finlays_extras",
     state: "solid",
     density: 700,
     burn: 20,
@@ -41,7 +41,7 @@ elements.sherry_stained_oak = {
 elements.pumpkin_purée = {
     color: "#fca311",
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_extras",
     state: "liquid",
     density: 600,
     temp: 20,
@@ -53,7 +53,7 @@ elements.pumpkin_purée = {
 elements.grape_purée = {
     color: "#8050A0",
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_extras",
     state: "liquid",
     density: 600,
     temp: 20,
@@ -65,7 +65,7 @@ elements.grape_purée = {
 elements.corn_mash = {
     color: "#ddbb72",
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     reactions: {
         "sugar": { elem1: "corn_wort", elem2: null }
@@ -79,7 +79,7 @@ elements.corn_mash = {
 elements.corn_wort = {
     color: "#E8C56A",
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     reactions: {
         "yeast": { elem1: "corn_wash", elem2: null}
@@ -93,7 +93,7 @@ elements.corn_wort = {
 elements.corn_wash = {
     color: "#d4b375",
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     density: 1010,
     temp: 20,
@@ -120,7 +120,7 @@ elements.corn_wash = {
 elements.foreshots = {
     color: "#e0c69a",
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     density: 1010,
     temp: 20,
@@ -134,7 +134,7 @@ elements.foreshots = {
 elements.middle_cuts = {
     color: "#b98243",
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     viscosity: 1.2,
     burn: 25,
@@ -151,7 +151,7 @@ elements.middle_cuts = {
 elements.tails = {
     color: "#78534a",
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     density: 1010,
     temp: 20,
@@ -168,7 +168,7 @@ elements.tails = {
 elements.bourbon = {
     color: "#BA6F1E", 
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     viscosity: 1.5,
     burn: 40,
@@ -186,7 +186,7 @@ elements.bourbon = {
 elements.sweetened_bourbon = {
     color: "#E5BD89",
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     viscosity: 1.5,
     burn: 40,
@@ -200,7 +200,7 @@ elements.sweetened_bourbon = {
 elements.pumpkin_spice_bourbon = {
     color: "#D98C3A",
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     viscosity: 1.5,
     burn: 40,
@@ -214,7 +214,7 @@ elements.pumpkin_spice_bourbon = {
 elements.barley = {
     color: "#e2c287",
     behavior: behaviors.POWDER,
-    category: "powders",
+    category: "finlays_extras",
     state: "solid",
     density: 600,
     reactions: {
@@ -225,7 +225,7 @@ elements.barley = {
 elements.wet_barley = {
     color: "#b09563",
     behavior: behaviors.POWDER,
-    category: "powders",
+    category: "finlays_extras",
     state: "solid",
     density: 800,
     tempHigh: 50,          
@@ -236,7 +236,7 @@ elements.wet_barley = {
 elements.malted_barley = {
     color: "#c2a670",
     behavior: behaviors.POWDER,
-    category: "powders",
+    category: "finlays_whisky",
     state: "solid",
     density: 550,
     breakInto: "grist",
@@ -250,7 +250,7 @@ elements.malted_barley = {
 elements.malt_mix = {
     color: "#D8C18A",
     behavior: behaviors.POWDER,
-    category: "powders",
+    category: "finlays_whisky",
     state: "solid",
     density: 550,
     reactions: {
@@ -262,7 +262,7 @@ elements.malt_mix = {
 elements.grain_mix = {
     color: "#C6A96B",
     behavior: behaviors.POWDER,
-    category: "powders",
+    category: "finlays_whisky",
     state: "solid",
     density: 550,
     reactions: {
@@ -274,7 +274,7 @@ elements.grain_mix = {
 elements.meal = {
     color: "#d6c5a0",
     behavior: behaviors.POWDER,
-    category: "powders",
+    category: "finlays_whisky",
     state: "solid",
     density: 550,
     reactions: {
@@ -286,7 +286,7 @@ elements.meal = {
 elements.grain_wort = {
     color: "#e3c56b",
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     reactions: {
         "yeast": { elem1: "grain_wash", elem2: null }
@@ -300,7 +300,7 @@ elements.grain_wort = {
 elements.grain_wash = {
     color: "#b98b48",
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     density: 1010,
     temp: 20,
@@ -324,7 +324,7 @@ elements.grain_wash = {
 elements.grain_foreshots = {
     color: "#E4D0AA",
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     density: 1010,
     temp: 20,
@@ -338,7 +338,7 @@ elements.grain_foreshots = {
 elements.grain_heart = {
     color: "#9f6e40",
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     viscosity: 1.2,
     burn: 25,
@@ -356,7 +356,7 @@ elements.grain_heart = {
 elements.grain_feints = {
     color: "#70503a",
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     density: 1010,
     temp: 20,
@@ -373,7 +373,7 @@ elements.grain_feints = {
 elements.irish_grain_whiskey = {
     color: "#A66A2C", 
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     viscosity: 1.5,
     burn: 40,
@@ -387,7 +387,7 @@ elements.irish_grain_whiskey = {
 elements.fruity_grain_heart = {
     color: "#a66b72", 
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     density: 1010,
     temp: 20,
@@ -404,7 +404,7 @@ elements.fruity_grain_heart = {
 elements.irish_fruit_whiskey = {
     color: "#A66A2C",
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     viscosity: 1.5,
     burn: 40,
@@ -415,10 +415,21 @@ elements.irish_fruit_whiskey = {
     hidden: true,
 };
 
+elements.peat = {
+    color: "#7d756d",
+    behavior: behaviors.POWDER,
+    categore: "finlays_extras",
+    state: "solid",
+    density: 550,
+    burn: 10,
+    burnTime: 300,
+    burnInto: "peat_smoke",
+};
+
 elements.peat_smoke = {
     color: "#7d756d",
     behavior: behaviors.GAS,
-    category: "gases",
+    category: "finlays_extras",
     state: "gas",
     density: 0.5,
     temp: 30,
@@ -428,7 +439,7 @@ elements.peat_smoke = {
 elements.grist = {
     color: "#9c814d",
     behavior: behaviors.POWDER,
-    category: "powders",
+    category: "finlays_whisky",
     state: "solid",
     density: 500,
     reactions: {
@@ -440,7 +451,7 @@ elements.grist = {
 elements.wort = {
     color: "#CB6F26",
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     reactions: {
         "yeast": { elem1: "wash", elem2: null }
@@ -454,7 +465,7 @@ elements.wort = {
 elements.wash = {
     color: "#d4b375",
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     density: 1010,
     temp: 20,
@@ -481,7 +492,7 @@ elements.wash = {
 elements.heads = {
     color: "#9f8f80",
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     density: 1010,
     temp: 20,
@@ -495,7 +506,7 @@ elements.heads = {
 elements.heart = {
     color: "#9f6e40",
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     viscosity: 1.2,
     burn: 25,
@@ -513,7 +524,7 @@ elements.heart = {
 elements.feints = {
     color: "#6c5540",
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     density: 1010,
     temp: 20,
@@ -530,7 +541,7 @@ elements.feints = {
 elements.scotch_whisky = {
     color: "#CF7F1D", 
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     viscosity: 1.5,
     burn: 40,
@@ -544,7 +555,7 @@ elements.scotch_whisky = {
 elements.sherry_scotch_whisky = {
     color: "#8c4a18",
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     viscosity: 1.6,
     burn: 45,
@@ -558,7 +569,7 @@ elements.sherry_scotch_whisky = {
 elements.peaty_malted_barley = {
     color: "#96784b",
     behavior: behaviors.POWDER,
-    category: "powders",
+    category: "finlays_whisky",
     state: "solid",
     density: 550,
     breakInto: "peaty_grist",
@@ -568,7 +579,7 @@ elements.peaty_malted_barley = {
 elements.peaty_grist = {
     color: "#7d653a",
     behavior: behaviors.POWDER,
-    category: "powders",
+    category: "finlays_whisky",
     state: "solid",
     density: 500,
     reactions: {
@@ -580,7 +591,7 @@ elements.peaty_grist = {
 elements.peaty_wort = {
     color: "#602803",
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     reactions: {
         "yeast": { elem1: "peaty_wash", elem2: null },
@@ -595,7 +606,7 @@ elements.peaty_wort = {
 elements.peaty_wash = {
     color: "#b59052",
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     density: 1010,
     temp: 20,
@@ -625,7 +636,7 @@ elements.peaty_wash = {
 elements.peaty_heads = {
     color: "#B39A83",
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     density: 1010,
     temp: 20,
@@ -642,7 +653,7 @@ elements.peaty_heads = {
 elements.peaty_heart = {
     color: "#92765F",
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     viscosity: 1.2,
     burn: 50,
@@ -661,7 +672,7 @@ elements.peaty_heart = {
 elements.peaty_feints = {
     color: "#655449",
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     density: 1010,
     temp: 20,
@@ -679,7 +690,7 @@ elements.peaty_feints = {
 elements.peaty_scotch_whisky = {
     color: "#8c4a18", 
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     viscosity: 1.6,
     burn: 45,
@@ -696,7 +707,7 @@ elements.peaty_scotch_whisky = {
 elements.peaty_sherry_scotch_whisky = {
     color: "#7a3b0f",
     behavior: behaviors.LIQUID,
-    category: "liquids",
+    category: "finlays_whisky",
     state: "liquid",
     viscosity: 1.7,
     burn: 50,
@@ -719,7 +730,7 @@ elements.grape.reactions["jelly"] = { elem1:"grape_purée", elem2:null };
 elements.pumpkin_purée_ice = {
     color: "#fca311",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_extras",
     state: "solid",
     density: 917,
     temp: -5,
@@ -731,7 +742,7 @@ elements.pumpkin_purée_ice = {
 elements.grape_purée_ice = {
     color: "#8050A0",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_extras",
     state: "solid",
     density: 917,
     temp: -5,
@@ -743,7 +754,7 @@ elements.grape_purée_ice = {
 elements.corn_mash_ice = {
     color: "#DDBB72",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_extras",
     state: "solid",
     density: 917,
     temp: -5,
@@ -755,7 +766,7 @@ elements.corn_mash_ice = {
 elements.corn_wort_ice = {
     color: "#e8c56a",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_whisky",
     state: "solid",
     density: 917,
     temp: -5,
@@ -767,7 +778,7 @@ elements.corn_wort_ice = {
 elements.corn_wash_ice = {
     color: "#c99c45",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_whisky",
     state: "solid",
     density: 920,
     temp: -10,
@@ -779,7 +790,7 @@ elements.corn_wash_ice = {
 elements.foreshots_ice = {
     color: "#e0c69a",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_whisky",
     state: "solid",
     density: 930,
     temp: -20,
@@ -791,7 +802,7 @@ elements.foreshots_ice = {
 elements.middle_cuts_ice = {
     color: "#b98243",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_whisky",
     state: "solid",
     density: 850,
     temp: -40,
@@ -803,7 +814,7 @@ elements.middle_cuts_ice = {
 elements.tails_ice = {
     color: "#78534a",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_whisky",
     state: "solid",
     density: 850,
     temp: -40,
@@ -815,7 +826,7 @@ elements.tails_ice = {
 elements.bourbon_ice = {
     color: "#BA6F1E",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_whisky",
     state: "solid",
     density: 860,
     temp: -40,
@@ -827,7 +838,7 @@ elements.bourbon_ice = {
 elements.sweetened_bourbon_ice = {
     color: "#E5BD89",
     behavior: behaviors.WALL,  
-    category: "states",
+    category: "finlays_whisky",
     state: "solid",
     density: 860,
     temp: -40,
@@ -839,7 +850,7 @@ elements.sweetened_bourbon_ice = {
 elements.pumpkin_spice_bourbon_ice = {
     color: "#D98C3A",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_whisky",
     state: "solid",
     density: 860,
     temp: -40,
@@ -851,7 +862,7 @@ elements.pumpkin_spice_bourbon_ice = {
 elements.wort_ice = {
     color: "#e39f66",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_whisky",
     state: "solid",
     density: 917,
     temp: -5,
@@ -863,7 +874,7 @@ elements.wort_ice = {
 elements.peaty_wort_ice = {
     color: "#7a431e",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_whisky",
     state: "solid",
     density: 917,
     temp: -5,
@@ -875,7 +886,7 @@ elements.peaty_wort_ice = {
 elements.wash_ice = {
     color: "#ebd9b5",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_whisky",
     state: "solid",
     density: 920,
     temp: -10,
@@ -887,7 +898,7 @@ elements.wash_ice = {
 elements.peaty_wash_ice = {
     color: "#cfb284",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_whisky",
     state: "solid",
     density: 920,
     temp: -10,
@@ -899,7 +910,7 @@ elements.peaty_wash_ice = {
 elements.heads_ice = {
     color: "#f2e6d9",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_whisky",
     state: "solid",
     density: 930,
     temp: -20,
@@ -911,7 +922,7 @@ elements.heads_ice = {
 elements.peaty_heads_ice = {
     color: "#e6d9c6",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_whisky",
     state: "solid",
     density: 930,
     temp: -20,
@@ -923,7 +934,7 @@ elements.peaty_heads_ice = {
 elements.heart_ice = {
     color: "#f2ede2",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_whisky",
     state: "solid",
     density: 850,
     temp: -40,
@@ -935,7 +946,7 @@ elements.heart_ice = {
 elements.peaty_heart_ice = {
     color: "#ebdcb8",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_whisky",
     state: "solid",
     density: 850,
     temp: -40,
@@ -947,7 +958,7 @@ elements.peaty_heart_ice = {
 elements.feints_ice = {
     color: "#e6d9c6",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_whisky",
     state: "solid",
     density: 940,
     temp: -20,
@@ -959,7 +970,7 @@ elements.feints_ice = {
 elements.peaty_feints_ice = {
     color: "#d9cbb8",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_whisky",
     state: "solid",
     density: 940,
     temp: -20,
@@ -971,7 +982,7 @@ elements.peaty_feints_ice = {
 elements.scotch_whisky_ice = {
     color: "#cf9153",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_whisky",
     state: "solid",
     density: 860,
     temp: -40,
@@ -983,7 +994,7 @@ elements.scotch_whisky_ice = {
 elements.peaty_scotch_whisky_ice = {
     color: "#b07041",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_whisky",
     state: "solid",
     density: 860,
     temp: -40,
@@ -995,7 +1006,7 @@ elements.peaty_scotch_whisky_ice = {
 elements.sherry_scotch_whisky_ice = {
     color: "#a05c2e",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_whisky",
     state: "solid",
     density: 860,
     temp: -40,
@@ -1007,7 +1018,7 @@ elements.sherry_scotch_whisky_ice = {
 elements.peaty_sherry_scotch_whisky_ice = {
     color: "#8c4a18",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_whisky",
     state: "solid",
     density: 860,
     temp: -40,
@@ -1019,7 +1030,7 @@ elements.peaty_sherry_scotch_whisky_ice = {
 elements.grain_wort_ice = {
     color: "#e3c56b",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_whisky",
     state: "solid",
     density: 917,
     temp: -5,
@@ -1031,7 +1042,7 @@ elements.grain_wort_ice = {
 elements.grain_wash_ice = {
     color: "#b98b48",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_whisky",
     state: "solid",
     density: 920,
     temp: -10,
@@ -1043,7 +1054,7 @@ elements.grain_wash_ice = {
 elements.grain_foreshots_ice = {
     color: "#e4d0aa",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_whisky",
     state: "solid",
     density: 930,
     temp: -20,
@@ -1055,7 +1066,7 @@ elements.grain_foreshots_ice = {
 elements.grain_heart_ice = {
     color: "#9f6e40",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_whisky",
     state: "solid",
     density: 850,
     temp: -40,
@@ -1067,7 +1078,7 @@ elements.grain_heart_ice = {
 elements.grain_feints_ice = {
     color: "#70503a",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_whisky",
     state: "solid",
     density: 940,
     temp: -20,
@@ -1079,7 +1090,7 @@ elements.grain_feints_ice = {
 elements.irish_grain_whiskey_ice = {
     color: "#a66b2c",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_whisky",
     state: "solid",
     density: 860,
     temp: -40,
@@ -1091,7 +1102,7 @@ elements.irish_grain_whiskey_ice = {
 elements.fruity_grain_heart_ice = {
     color: "#a66b72",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_whisky",
     state: "solid",
     density: 850,
     temp: -40,
@@ -1103,7 +1114,7 @@ elements.fruity_grain_heart_ice = {
 elements.irish_fruit_whiskey_ice = {
     color: "#a66b2c",
     behavior: behaviors.WALL,
-    category: "states",
+    category: "finlays_whisky",
     state: "solid",
     density: 860,
     temp: -40,
